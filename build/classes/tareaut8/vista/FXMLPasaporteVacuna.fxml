@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="751.0" prefWidth="1006.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tareaut8.controlador.FXMLPasaporteVacunaController">
+   <children>
+      <Pane fx:id="pnUsuario" layoutX="4.0" layoutY="7.0" prefHeight="221.0" prefWidth="230.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <Label fx:id="lbDDatosUsuario" layoutX="186.0" layoutY="29.0" prefHeight="17.0" prefWidth="77.0" text="Datos Usuario" />
+            <Label fx:id="lbNombre" layoutX="20.0" layoutY="70.0" text="Nombre" />
+            <Label fx:id="lbApellidos" layoutX="20.0" layoutY="120.0" text="Apellidos" />
+            <Label fx:id="lbdni" layoutX="20.0" layoutY="170.0" text="DNI" />
+            <Label fx:id="lbFechaNac" layoutX="20.0" layoutY="220.0" text="Fecha Nacimiento" />
+            <Label fx:id="lbGrupo" layoutX="20.0" layoutY="270.0" text="Grupo" />
+            <Label fx:id="lbSexo" layoutX="422.0" layoutY="39.0" text="Sexo" />
+            <TextField fx:id="tfNombre" layoutX="150.0" layoutY="65.0" />
+            <TextField fx:id="tfApellidos" layoutX="150.0" layoutY="115.0" />
+            <TextField fx:id="tfdni" layoutX="150.0" layoutY="165.0" />
+            <DatePicker fx:id="dpFechaNac" layoutX="150.0" layoutY="215.0" />
+            <ComboBox fx:id="cbGrupo" layoutX="150.0" layoutY="265.0" prefWidth="150.0" />
+            <RadioButton fx:id="rbHombre" layoutX="417.0" layoutY="89.0" mnemonicParsing="false" text="Hombre">
+               <toggleGroup>
+                  <ToggleGroup fx:id="rbSexo" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rbMujer" layoutX="417.0" layoutY="129.0" mnemonicParsing="false" text="Mujer" toggleGroup="$rbSexo" />
+            <Button fx:id="btLimpiar" layoutX="404.0" layoutY="210.0" mnemonicParsing="false" onAction="#limpiarDatos" text="Limpiar" />
+            <Button fx:id="btInsertarUser" layoutX="700.0" layoutY="293.0" mnemonicParsing="false" onAction="#insertarUsuario" text="Insertar Usuario" />
+            <Label fx:id="lbUsuarios" layoutX="728.0" layoutY="31.0" text="Usuarios" />
+            <TableView fx:id="tvUsuario" layoutX="515.0" layoutY="63.0" prefHeight="200.0" prefWidth="475.0">
+              <columns>
+                <TableColumn fx:id="tvNombre" prefWidth="75.0" text="Nombre" />
+                <TableColumn fx:id="tvApellidos" prefWidth="75.0" text="Apellidos" />
+                  <TableColumn fx:id="tvDni" prefWidth="75.0" text="DNI" />
+                  <TableColumn fx:id="tvFechaNacimiento" prefWidth="88.72210693359375" text="Fecha Nacimiento" />
+                  <TableColumn fx:id="tvGrupo" prefWidth="72.27789306640625" text="Grupo" />
+                  <TableColumn fx:id="tvSexo" prefWidth="88.18756103515625" text="Sexo" />
+              </columns>
+            </TableView>
+            <ListView fx:id="lvEventos" layoutX="512.0" layoutY="434.0" prefHeight="200.0" prefWidth="475.0" />
+            <Label layoutX="710.0" layoutY="394.0" text="Eventos Covid" />
+            <Button fx:id="btInsertarEvento" layoutX="701.0" layoutY="668.0" mnemonicParsing="false" onAction="#insertarEvento" text="Insertar Evento" />
+            <Label fx:id="lbDatosEventosCovid" layoutX="163.0" layoutY="391.0" text="Datos Eventos Covid" />
+            <Label fx:id="lbTipo" layoutX="20.0" layoutY="450.0" text="Tipo" />
+            <Label fx:id="lbFechaEve" layoutX="20.0" layoutY="500.0" text="Fecha Evento" />
+            <RadioButton fx:id="rbPruebaDeContagio" layoutX="170.0" layoutY="450.0" mnemonicParsing="false" onAction="#pruebaContagio" text="Prueba de contagio">
+               <toggleGroup>
+                  <ToggleGroup fx:id="rbTipo" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rbVacunacion" layoutX="320.0" layoutY="450.0" mnemonicParsing="false" onAction="#vacunacion" text="Vacunacion" toggleGroup="$rbTipo" />
+            <DatePicker fx:id="dpFechaEvento" layoutX="170.0" layoutY="493.0" />
+            <Pane fx:id="pnPruebaContagio" layoutX="12.0" layoutY="528.0" prefHeight="117.0" prefWidth="441.0">
+               <children>
+                  <RadioButton fx:id="rbPositivo" layoutX="161.0" layoutY="21.0" mnemonicParsing="false" text="Positivo">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="rbResultado" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="rbNegativo" layoutX="312.0" layoutY="21.0" mnemonicParsing="false" text="Negativo" toggleGroup="$rbResultado" />
+                  <ComboBox fx:id="cbTipoPrueba" layoutX="162.0" layoutY="66.0" prefWidth="150.0" />
+                  <Label fx:id="lbTipoPrueba" layoutX="1.0" layoutY="71.0" text="Tipo de prueba" />
+                  <Label fx:id="lbResultado" layoutX="5.0" layoutY="21.0" text="Resultado" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnVacunacion" layoutX="10.0" layoutY="640.0" prefHeight="92.0" prefWidth="432.0">
+               <children>
+                  <Label fx:id="lbNumeroDeDosis" layoutX="9.0" layoutY="14.0" text="Numero de dosis" />
+                  <Label fx:id="lbNombreVacuna" layoutX="10.0" layoutY="56.0" text="Nombre de la vacuna" />
+                  <TextField fx:id="tfNumeroDosis" layoutX="159.0" layoutY="9.0" prefHeight="27.0" prefWidth="56.0" />
+                  <ComboBox fx:id="cbNombreVacuna" layoutX="159.0" layoutY="51.0" prefWidth="150.0" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
