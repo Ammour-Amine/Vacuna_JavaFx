@@ -5,6 +5,8 @@
  */
 package tareaut8.modelo;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 
 /**
@@ -16,18 +18,18 @@ public class Usuario {
     private String nombre;
     private String apellidos;
     private String dni;
-    private String fechaNac;
+    private LocalDate fechaNac;
     private String grupo;
     private String sexo;
-    private LinkedList listaEventos;
+    private LinkedList<EventoCovid> listaEventos;
     
     //Constructor por defecto.
     public Usuario() {
-        this.listaEventos=new LinkedList();
+        this.listaEventos=new LinkedList<EventoCovid>();
     }
     
     //Constructor con parametros.
-    public Usuario(String nombre, String apellidos, String dni, String fechaNac, String grupo, String sexo) {
+    public Usuario(String nombre, String apellidos, String dni, LocalDate fechaNac, String grupo, String sexo) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -63,10 +65,12 @@ public class Usuario {
     }
 
     public String getFechaNac() {
-        return fechaNac;
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String mi_date=fechaNac.format(forma);
+        return mi_date;
     }
 
-    public void setFechaNac(String fechaNac) {
+    public void setFechaNac(LocalDate fechaNac) {
         this.fechaNac = fechaNac;
     }
 
@@ -88,7 +92,7 @@ public class Usuario {
     
     //Methodo getListaEventos.
     
-    public LinkedList getListaEventos(){
+    public LinkedList<EventoCovid> getListaEventos(){
         
         return new LinkedList(listaEventos);
     }
@@ -96,19 +100,23 @@ public class Usuario {
     //Methodo añadirEventosCovid.
     
     public void añadirEventoCovid(EventoCovid ev){
-        listaEventos.add(ev);
+        this.listaEventos.add(ev);
     }
     
     //Metodo eliminarEventos.
     
     public void eliminarEventoCovid(EventoCovid ev){
-        listaEventos.remove(ev);
+        this.listaEventos.remove(ev);
     }
     
     //El metodo toString.
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", fechaNac=" + fechaNac + ", grupo=" + grupo + ", sexo=" + sexo + '}';
+        
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String mi_date=fechaNac.format(forma);
+        
+        return "Usuario{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", fechaNac=" + mi_date + ", grupo=" + grupo + ", sexo=" + sexo + '}';
     }
     
     

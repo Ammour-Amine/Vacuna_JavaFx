@@ -5,6 +5,9 @@
  */
 package tareaut8.modelo;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author mac
@@ -20,7 +23,7 @@ public class Vacunacion extends EventoCovid {
     }
     
     //Constructor con parametros.
-    public Vacunacion(Integer numDosis, String nombreVacuna, String fecha) {
+    public Vacunacion(Integer numDosis, String nombreVacuna, LocalDate fecha) {
         super(fecha);
         this.numDosis = numDosis;
         this.nombreVacuna = nombreVacuna;
@@ -45,10 +48,12 @@ public class Vacunacion extends EventoCovid {
     }
 
     public String getFecha() {
-        return fecha;
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String mi_date=fecha.format(forma);
+        return mi_date;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
     
@@ -56,7 +61,7 @@ public class Vacunacion extends EventoCovid {
     //Metodo toString.
     @Override
     public String toString() {
-        return "Vacunacion{" + "numDosis=" + numDosis + ", nombreVacuna=" + nombreVacuna +super.toString()+ '}';
+        return "Numero de dosis=" + numDosis + ", nombre de la vacuna: " + nombreVacuna +super.toString();
     }
     
     

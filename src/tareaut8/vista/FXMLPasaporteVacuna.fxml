@@ -32,7 +32,7 @@
             <Button fx:id="btLimpiar" layoutX="404.0" layoutY="210.0" mnemonicParsing="false" onAction="#limpiarDatos" text="Limpiar" />
             <Button fx:id="btInsertarUser" layoutX="700.0" layoutY="293.0" mnemonicParsing="false" onAction="#insertarUsuario" text="Insertar Usuario" />
             <Label fx:id="lbUsuarios" layoutX="728.0" layoutY="31.0" text="Usuarios" />
-            <TableView fx:id="tvUsuario" layoutX="515.0" layoutY="63.0" prefHeight="200.0" prefWidth="475.0">
+            <TableView fx:id="tvUsuario" layoutX="515.0" layoutY="63.0" onMouseClicked="#listaDeUnUsuarioEnconcreto" prefHeight="200.0" prefWidth="475.0">
               <columns>
                 <TableColumn fx:id="tvNombre" prefWidth="75.0" text="Nombre" />
                 <TableColumn fx:id="tvApellidos" prefWidth="75.0" text="Apellidos" />

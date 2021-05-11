@@ -5,6 +5,9 @@
  */
 package tareaut8.modelo;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author mac
@@ -21,7 +24,7 @@ public class PruebaContagio extends EventoCovid{
     }
     
     //Constructos con parametros.
-    public PruebaContagio(TipoPrueba prueba, boolean positivo, String fecha) {
+    public PruebaContagio(TipoPrueba prueba, boolean positivo, LocalDate fecha) {
         super(fecha);
         this.prueba = prueba;
         this.positivo = positivo;
@@ -46,16 +49,23 @@ public class PruebaContagio extends EventoCovid{
     }
 
     public String getFecha() {
-        return fecha;
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String mi_date=fecha.format(forma);
+        return mi_date;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
     @Override
     public String toString() {
-        return "PruebaContagio{" + "prueba=" + prueba + ", positivo=" + positivo + super.toString()+'}';
+        String resultado;
+        
+        if(positivo) resultado="Positivo";
+        else    resultado ="Negativo";
+        
+        return "Prueba: " + prueba + ", resultado: " + resultado + super.toString();
     }
     
     

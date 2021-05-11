@@ -5,36 +5,45 @@
  */
 package tareaut8.modelo;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author mac
  */
-abstract class EventoCovid {
+    public abstract class EventoCovid {
     //Atributo
-    protected String fecha;
+    protected LocalDate fecha;
     
     //Constructor sin parametros.
     public EventoCovid() {
     }
 
     //Constructor con paramertos
-    public EventoCovid(String fecha) {
+    public EventoCovid(LocalDate fecha) {
         this.fecha = fecha;
     }
     
     //Getters and setters
     public String getFecha() {
-        return fecha;
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String mi_date=fecha.format(forma);
+        return mi_date;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
     
     //Metodo toString.
     @Override
     public String toString() {
-        return "EventoCovid{" + "fecha=" + fecha + '}';
+        
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String mi_date=fecha.format(forma);
+        
+        return " fecha: " + mi_date;
     }
     
     
